@@ -1,0 +1,62 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+        <title>mtime</title>
+        <meta name="keywords" content="侧边导航菜单(可分组折叠)">
+        <meta name="description" content="侧边导航菜单(可分组折叠)" />
+        <meta name="HandheldFriendly" content="True" />
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <!-- Bootstrap3.3.5 CSS -->
+         <link rel="stylesheet" href="/static/plugins/bootstrap-3.3.7-dist/css/bootstrap.css">
+         <link href="/static/css/style.css" rel="stylesheet" />
+         <script src="/static/plugins/bootstrap-3.3.7-dist/js/jquery-1.11.1.min.js"></script>
+         <script src="/static/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+
+    <!-- body 开始  -->
+    <body>
+         <!-- 导航栏 开始  -->
+        {% block navbar %}{% endblock %}
+        <!-- 导航栏结束  -->
+
+        <!-- body 内容 开始 -->
+         {% block body %}{% endblock %}
+          <!-- body 内容 结束 -->
+
+          <!-- JS开始 -->
+         <script>
+              $(function(){
+                  $(".panel-heading").click(function(e){
+                     /*切换折叠指示图标*/
+                      $(this).find("span").toggleClass("glyphicon-chevron-down");
+                      $(this).find("span").toggleClass("glyphicon-chevron-up");
+                  });
+              });
+         </script>
+
+         <script>
+                $("#checkAll").click(function() {
+                        if (this.checked)
+                            {$("input[name='pk']").prop("checked","true");}
+                        else
+                            {$("input[name='pk']").removeProp("checked");}
+
+            })
+</script>
+
+        <!-- JS 结束 -->
+    </body>
+    <!-- body 内容 结束 -->
+</html>

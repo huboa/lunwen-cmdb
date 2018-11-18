@@ -1,0 +1,35 @@
+
+{% extends 'layout.html' %}
+
+<!-- body 内容-->
+{% block content %}
+    <div class="container">
+           <h1>运维管理中心首页</h1>
+           <h1>{{ request_host }}</h1>
+
+</div>
+
+{% endblock %}
+
+<form>
+
+<td class="rd8">
+    <input type="checkbox" name="checkAll" id="checkAll" value="1">
+    <input type="checkbox" name="selectFlag" id="selectFlag" value="1">
+    <input type="checkbox" name="selectFlag" id="selectFlag" value="1">
+</td>
+
+</form>
+
+<script>
+$("#checkAll").click(function() {
+                        if (this.checked)
+                            {$("input[name='selectFlag']").prop("checked","true");}
+                        else
+                            {$("input[name='selectFlag']").removeProp("checked");}
+
+            })
+</script>
+
+
+

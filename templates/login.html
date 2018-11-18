@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+
+       <form class="form-horizontal" method="post" method="post" novalidate>
+            {% csrf_token %}
+            <div class="clearfix">
+                 <div class="form-group col-sm-3">
+                     <p>{{ form.username.label }}: {{ form.username }} {{ form.username.errors.0 }}</p>
+                     <p>{{ form.password.label }}: {{ form.password }} {{ form.password.errors.0 }}</p>
+                 </div>
+            </div>
+
+           <div class="form-group">
+
+               <div class="col-sm-offset-2 col-sm-2">
+
+                   <input type="submit" value="提交" class="btn btn-primary">
+
+               </div>
+
+             </div>
+        </form>
+
+    </div>
+{% endblock %}

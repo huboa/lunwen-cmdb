@@ -1,0 +1,94 @@
+
+ <!-- 加载模板-->
+{% extends 'layout.html' %}
+
+{% block content %}
+
+            <h1>列表页面</h1>
+            <!-- 组合搜索开始 -->
+            <div class="comb-search" >
+                {% for row in cl.show_comb_search %}
+
+                    <div class="item">
+                        {% for item in row %}
+                           {{ item }}
+                        {% endfor %}
+
+                    </div>
+                {% endfor %}
+
+            </div>
+            <!-- 组合搜索结束 -->
+
+            <!--搜索页面-->
+            <div style="float: right">
+                 {% if cl.search_list %}
+                <form class="form-inline" method="get">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="key" placeholder="请输入关键字" value="{{  cl.search_value }}">
+                    </div>
+                    <button type="submit"class="btn-primary">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </form>
+            {% endif %}
+            </div>
+
+            <!--添加按钮-->
+            <div style="margin: 5px 0">
+                <a href="{{ cl.add_url }}" class="btn btn-success">添加</a>
+            </div>
+
+
+            <!--body+批量选择标签-->
+            <div style="margin: 5px 0">
+                <form class="form-inline" method="post">
+                    {% csrf_token %}
+                    <!-- 列表-->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                {% for item in cl.header_list %}
+                                    <th>{{ item }}</th>
+                                {% endfor%}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in cl.body_list %}
+                            <tr>
+                                {% for col in row %}
+                                    <td>{{ col }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                    <!-- 批量选择标签 结束-->
+
+                    {% if cl.action_list %}
+                        <div  class="btn">
+                        {% for act in cl.action_list %}
+                            <!--
+                            <button type="submit" name="action" value="item.massenable" class="btn-alt" confirm="Enable selected items?">Enable</button>
+                            <button type="submit" name="action" value="item.massdisable" class="btn-alt" confirm="Disable selected items?">Disable</button>
+                            <button type="submit" name="action" value="item.massclearhistory" class="btn-alt" confirm="Delete history of selected items?">Clear history</button>
+                            <button type="submit" name="action" value="item.masscopyto" class="btn-alt">Copy</button>
+                            <button type="submit" name="action" value="item.massupdateform" class="btn-alt">Mass update</button>
+                            <button type="submit" name="action" value="item.massdelete" class="btn-alt" confirm="Delete selected items?">Delete</button>
+                            -->
+                            <button type="submit" name="action" value="{{ act.func_name }}" class="btn btn-primary" confirm="ext  selected" >{{ act.name }}</button>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                </form>
+            </div>
+
+            <!--页码-->
+            <ul class="pagination">
+                 {{ cl.page_html  }}
+            </ul>
+{#      </div>#}
+{% endblock %}
+{#</html>#}

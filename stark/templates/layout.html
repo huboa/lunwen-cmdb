@@ -1,0 +1,44 @@
+ <!-- 加载头样式-->
+{#{%  include 'head.html' %}#}
+{% extends 'head.html' %}
+ <!-- 加载头模板-->
+{% load head_layout %}
+
+ <!-- 加载左侧菜单数据-->
+{% load left_menu %}
+
+ <!-- 导航条-->
+{% block navbar %}
+    {% head_layout request %}
+{% endblock %}
+ <!-- 导航条-->
+
+<!-- body开始-->
+{% block body %}
+     <div class="container-fluid">
+
+                 <!-- 左侧菜单-->
+                 <div class="col-md-2">
+                       <div class="panel-group table-responsive" role="tablist">
+                            {%  menu request %}
+                       </div>
+                  </div>
+                <!-- 左侧菜单 -->
+
+                <!-- 内容开始-->
+                <div class="col-md-9">
+                    {% block  content%}
+                    {% endblock %}
+                 </div>
+                <!-- 内容结束-->
+            </div>
+
+
+{% endblock %}
+<!-- body结束-->
+
+
+
+{#{% load tag_test %}#}
+
+
